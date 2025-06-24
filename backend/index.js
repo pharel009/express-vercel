@@ -10,28 +10,12 @@ const app = express();
 
 app.use(express.json());
 
-const port = process.env.PORT || 2020;
-
 // Middlewares
-app.use('/shelves', shelfRouter)
+app.use("/shelves", shelfRouter);
 
 // Global error middleware
-app.use(globalErrorHandler)
+app.use(globalErrorHandler);
 
-const startServer = async () => {
-  try {
-    await DbConnect(); // connect to database
-    if (process.env.NODE_ENV !== "production") {
-      app.listen(port, () => {
-        console.log(`App is running on http://localhost:${port}`);
-      });
-    }
-  } catch (error) {
-    console.error("Failed to start server:", error.message);
-    process.exit(1);
-  }
-};
-
-startServer();
+await DbConnect(); // connect to database
 
 export default app;
