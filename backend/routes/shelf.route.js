@@ -6,5 +6,8 @@ const shelfRouter = Router();
 
 shelfRouter.post('/create', shelfController.createShelf);
 shelfRouter.get('/', shelfController.getAllShelves);
+shelfRouter.get('/:id', shelfController.getShelf);
+shelfRouter.patch('/:id', shelfController.updateShelf);
+shelfRouter.delete('/:id', shelfController.deleteShelf);
 
 export default shelfRouter;
