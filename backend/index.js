@@ -21,7 +21,7 @@ app.use(globalErrorHandler)
 const startServer = async () => {
   try {
     await DbConnect(); // connect to database
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV !== "production") {
       app.listen(port, () => {
         console.log(`App is running on http://localhost:${port}`);
       });
